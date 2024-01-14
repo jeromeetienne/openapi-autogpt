@@ -20,3 +20,7 @@ Then start the client
 ```
 npm run start:client
 ```
+
+## Examples of .openapi_autogpt.json
+- [here](./examples/example_server_api.openapi_autogpt.json)
+- [json-schema](./data/openapi_autogpt.readline_history.json)

@@ -26,44 +26,6 @@ const puppeteerBrowser = await Puppeteer.launch({
 	headless: 'new'
 });
 
-// ///////////////////////////////////////////////////////////////////////////////
-// ///////////////////////////////////////////////////////////////////////////////
-// //	
-// ///////////////////////////////////////////////////////////////////////////////
-// ///////////////////////////////////////////////////////////////////////////////
-
-// expressRouter.get('/topicsOld', expressApiCache(10), async (request, response) => {
-// 	const pageUrl = 'https://news.ycombinator.com/'
-// 	const puppeteerPage = await puppeteerBrowser.newPage();
-// 	await puppeteerPage.goto(pageUrl);
-
-
-// 	// Evaluate JavaScript
-// 	const topicItems = await puppeteerPage.evaluate(() => {
-// 		// @ts-ignore
-// 		const titleLineEls = /** @type {HTMLElement[]} */(document.querySelectorAll(".titleline"))
-// 		const topicItems =  /** @type {import('../type.d.js').HNTopicsItem[]} */([])
-// 		for (const titleLineEl of titleLineEls) {
-// 			const titleEl = titleLineEl.querySelector("a")
-// 			const plainHrefUrl = titleEl?.getAttribute("href") || ""
-// 			const absoluteUrl = new URL(plainHrefUrl, window.location.href).href
-// 			const hnTitle = /** @type {import('../type.d.js').HNTopicsItem} */({
-// 				title: titleEl?.textContent,
-// 				url: absoluteUrl,
-// 			})
-// 			topicItems.push(hnTitle)
-// 		}
-// 		return topicItems
-// 	})
-// 	console.log({ topicItems })
-
-// 	const hnTopicsResult = /** @type {import('../type.d.js').HNTopicsResult} */({
-// 		topicItems: topicItems
-// 	})
-
-// 	response.json(hnTopicsResult)
-// })
-
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 //	
@@ -153,7 +115,6 @@ async function init() {
 //	Export from the module
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
-
 
 export default class ServerApiHackerNews {
 	static init = init;

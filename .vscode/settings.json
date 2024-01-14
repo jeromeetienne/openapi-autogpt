@@ -4,7 +4,7 @@
 			"fileMatch": [
 				"/*.openapi_autogpt.json"
 			],
-			"url": "./test/openapi_autogpt.schema.json"
+			"url": "./data/json_schemas/openapi_autogpt.schema.json"
 		}
 	]
 }
