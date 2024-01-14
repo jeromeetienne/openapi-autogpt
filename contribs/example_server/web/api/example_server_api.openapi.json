@@ -1,0 +1,241 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Example Server API",
+		"description": "Basic API needed for Pupeeter"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:3010/",
+			"description": "Development server"
+		}
+	],
+	"paths": {
+		"/api/gpt-hn/topics": {
+			"get": {
+				"description": "get all the topics from hacker news",
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"topicItems": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"title": {
+														"type": "string"
+													},
+													"url": {
+														"type": "string"
+													},
+													"upVotesCount": {
+														"type": "number"
+													},
+													"commentsCount": {
+														"type": "number"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/gpt-hn/pageContent": {
+			"get": {
+				"description": "get the content of a web page, in markdown",
+				"parameters": [
+					{
+						"name": "pageUrl",
+						"in": "query",
+						"description": "url of the web page",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"example": "https://weboostai.com/home/"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"content": {
+											"type": "string",
+											"description": "content of the web page in markdown"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/gpt-actions/named-entities": {
+			"get": {
+				"description": "Entract named entities some text",
+				"parameters": [
+					{
+						"name": "pageContent",
+						"in": "query",
+						"description": "The content of a page",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"example": "Alex is 5 feet tall. Claudia is 4 feet taller Alex and jumps higher than him. Claudia is a brunette and Alex is blonde. Alex's dog Frosty is a labrador and likes to play hide and seek."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"namedEntities": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"personName": {
+														"type": "string"
+													},
+													"personAge": {
+														"type": "number"
+													},
+													"personHairColor": {
+														"type": "string"
+													},
+													"dogName": {
+														"type": "string"
+													},
+													"dogBreed": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/gpt-actions/sentimentTagging": {
+			"get": {
+				"description": "tag some text",
+				"parameters": [
+					{
+						"name": "pageContent",
+						"in": "query",
+						"description": "The content of a page",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"examples": {
+							"frenchHappy": {
+								"value":"Je suis incroyablement heureux de vous avoir rencontre ! Je pense que nous serons de tres bons amis !"
+							},
+							"englishUnhappy": {
+								"value":"im really not happy to see you today. I think we will never be friends."
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"sentiment": {
+											"type": "string"
+										},
+										"tone": {
+											"type": "string"
+										},
+										"language": {
+											"type": "string"
+										}
+									}
+								},
+								"examples": {
+									"frenchHappy": {
+										"value": {
+											"sentiment": "positive",
+											"tone": 9,
+											"language": "french"
+										}
+									},
+									"englishUnhappy": {
+										"value": {
+											"sentiment": "negative",
+											"tone": 2,
+											"language": "english"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/gpt-actions/summarization": {
+			"get": {
+				"description": "get the content of a web page, in markdown",
+				"parameters": [
+					{
+						"name": "pageContent",
+						"in": "query",
+						"description": "The content of a page",
+						"required": true,
+						"schema": {
+							"type": "string"
+						},
+						"example": "This is a great document. It has a lot of content. it say blablablablablabla, and other random things. Not that interesting but this is ok, not great but ok."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"summary": {
+											"type": "string",
+											"description": "the summary of the pageContent"										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

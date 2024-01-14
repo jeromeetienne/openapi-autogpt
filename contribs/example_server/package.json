@@ -1,0 +1,24 @@
+{
+  "name": "server_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server/server.js",
+    "start:nodemon": "nodemon -w src src/server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "langchain": "^0.1.2",
+    "memory-cache": "^0.2.0",
+    "nodemon": "^3.0.2",
+    "serve-index": "^1.9.1",
+    "sleep-promise": "^9.1.0"
+  }
+}

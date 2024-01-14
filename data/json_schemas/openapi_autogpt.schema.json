@@ -1,0 +1,51 @@
+{
+        "title": "OpenAPI AutoGpt",
+        "description": "AutoGpt extension for OpenAPI",
+        "type": "object",
+        "required": [
+                "userInputExamples",
+                "shortGreetingPrompt",
+                "systemMessage",
+                "callBaseUrl",
+                "openApiPathWhiteList",
+                "openApiPathBlackList"
+        ],
+        "additionalProperties": false,
+        "properties": {
+                "userInputExamples": {
+                        "description": "list of example of user input. Thing the user may ask the bot.",
+                        "type": "array",
+                        "items": {
+                                "type": "string"
+                        }
+                },
+                "shortGreetingPrompt": {
+                        "description": "message of the day is what you tell the user when he start the bot. this is the welcome message. It describe to the users what the bot can do for him.",
+                        "type": "string"
+                },
+                "systemMessage": {
+                        "description": "system message is what you tell the bot about the behaviour he should have. This is the instruction he should follow.",
+                        "type": "string"
+                },
+                "callBaseUrl": {
+                        "description": "the base Url to call the openApi path",
+                        "type": "string"
+                },
+                "openApiPathWhiteList": {
+                        "description": "white list of the openApi path. If the path is not in the white list, the bot will not call it.",
+                        "type": "array",
+                        "items": {
+                                "type": "string",
+                                "description": "the path of the openApi. It should start with /. it can be a glob pattern."
+                        }
+                },
+                "openApiPathBlackList": {
+                        "description": "black list of the openApi path. If the path is in the black list, the bot will not call it.",
+                        "type": "array",
+                        "items": {
+                                "type": "string",
+                                "description": "the path of the openApi. It should start with /. it can be a glob pattern."
+                        }
+                }
+        }
+}

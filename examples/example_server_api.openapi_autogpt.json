@@ -1,0 +1,12 @@
+{
+	"userInputExamples": [
+		"what are the top stories"
+	],
+	"shortGreetingPrompt": "Hello, today i will be your assistant. I am here to help you with the hacker news site.",
+	"systemMessage": "You are a helpful assistant. You are helping a user to play with hacker news site. It has a list of topics and you can ask the user to pick one of them.",
+	"callBaseUrl": "http://localhost:3010",
+	"openApiPathWhiteList": [
+		"/api/gpt-hn/topics"
+	],
+	"openApiPathBlackList": []
+}

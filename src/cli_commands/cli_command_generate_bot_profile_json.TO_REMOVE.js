@@ -1,0 +1,22 @@
+// local imports
+import BotProfileHelper from '../bot_profile_helper.TO_REMOVE.js'
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+//	
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @param {string} openApiUrl
+ * @param {string} autoGptFileName 
+ */
+export default async function cliCommandGenerateBotProfileJson(openApiUrl, autoGptFileName) {
+
+	const botProfile = await BotProfileHelper.buildBotProfileFromAutoGpt(openApiUrl, autoGptFileName)
+
+	// output the openapi_autogpt.json file
+	console.log(JSON.stringify(botProfile, null, '\t'))
+}
+
+

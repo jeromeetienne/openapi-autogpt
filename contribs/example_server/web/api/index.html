@@ -1,0 +1,38 @@
+<!doctype html> <!-- Important: must specify -->
+<html>
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="../images/robot-icon.svg">
+
+	<meta charset=" utf-8"> <!-- Important: rapi-doc uses utf8 characters -->
+	<script type="module" src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>
+</head>
+
+<body>
+	<rapi-doc font-size="largest" allow-authentication=false show-header=true allow-search=false
+		allow-advanced-search=false allow-spec-url-load=false allow-spec-file-load=false theme="light"
+		render-style="view" spec-url="./example_server_api.openapi.json">
+
+		<!-- provide slot attribute to place an element at desired location -->
+		<div slot="logo">
+			<a href="../api/" style="text-decoration: none; ">
+				<div style="color:#fff; font-size: 1.3rem; display: inline-block;">
+					<b>
+						Example Server
+					</b>
+					<small style="color:lightgray;">
+						API
+					</small>
+				</div>
+			</a>
+		</div>
+	</rapi-doc>
+</body>
+
+</html>

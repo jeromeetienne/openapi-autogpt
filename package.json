@@ -1,0 +1,29 @@
+{
+	"name": "openapi_autogpt",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"bin": {
+		"openapi-autogpt": "bin/openapi_autogpt_cli.js"
+	},
+	"scripts": {
+		"start": "npm run start:client",
+		"start:client": "node bin/openapi_autogpt_cli.js query -o ./contribs/example_server/web/api/example_server_api.openapi.json -a ./examples/example_server_api.openapi_autogpt.json",
+		"start:client:dev": "DEBUG=* npm run start:client",
+		"start:server": "cd contribs/example_server && npm start",
+		"preinstall": "cd contribs/example_server && npm install",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@readme/openapi-parser": "^2.5.0",
+		"cli-color": "^2.0.3",
+		"commander": "^11.1.0",
+		"debug": "^4.3.4",
+		"globrex": "^0.1.2",
+		"openai": "^4.24.7"
+	}
+}
