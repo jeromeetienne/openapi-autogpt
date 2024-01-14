@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:json_schema": "ajv validate -s ../data/json_schemas/openapi_autogpt.schema.json -d '../examples/*.openapi_autogpt.json'",
+    "test:json_schema": "ajv validate -s ../data/json_schemas/openapi_autogpt.schema.json -d '../data/openapi_autogpts/*.openapi_autogpt.json'",
     "test": "npm run test:json_schema"
   },
   "keywords": [],

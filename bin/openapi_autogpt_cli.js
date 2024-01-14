@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-// .env file support - MUST be first in all .exe - https://www.npmjs.com/package/dotenv
-// import 'dotenv/config'	
-
 // npm imports
 import * as Commander from "commander"
 

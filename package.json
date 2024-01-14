@@ -9,11 +9,11 @@
 	},
 	"scripts": {
 		"start": "npm run start:client",
-		"start:client": "node bin/openapi_autogpt_cli.js query -o ./contribs/example_server/web/api/example_server_api.openapi.json -a ./examples/example_server_api.openapi_autogpt.json",
+		"start:client": "node bin/openapi_autogpt_cli.js query -o ./contribs/example_server/web/api/example_server_api.openapi.json -a ./data/openapi_autogpts/example_server_api.openapi_autogpt.json",
 		"start:client:dev": "DEBUG=* npm run start:client",
 		"start:server": "cd contribs/example_server && npm start",
 		"preinstall": "cd contribs/example_server && npm install",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "cd test && npm test"
 	},
 	"keywords": [],
 	"author": "",

@@ -77,7 +77,7 @@ export default async function cliCommandQuery(openApiFileName, autoGptFileName) 
 
 	// init readline history
 	let readlineHistory = /** @type {string[]} */([])
-	const readlineHistoryPath = Path.join(__dirname, `../../data/openapi_autogpt.readline_history.json`)
+	const readlineHistoryPath = Path.join(__dirname, `../../data/readline_histories/openapi_autogpt.readline_history.json`)
 
 	// test if the history file exists
 	let historyFileExists = await Fs.promises.access(readlineHistoryPath).then(() => true).catch(() => false)
