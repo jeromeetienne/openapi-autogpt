@@ -58,7 +58,7 @@ expressRouter.get('/named-entities', expressApiCache(10), async (request, respon
 	const callResult = typeof(callResultStr) === 'string' ? JSON.parse(callResultStr) : callResultStr
 
 	// build response from the call result
-	const reponseJson = /** @type {import('../type.d.js').GptNamedEntitiesResult} */(callResult)
+	const reponseJson = /** @type {import('./type.d.js').GptNamedEntitiesResult} */(callResult)
 	return response.json(reponseJson)
 })
 
@@ -101,7 +101,7 @@ expressRouter.get('/sentimentTagging', expressApiCache(10), async (request, resp
 	const callResult = typeof(callResultStr) === 'string' ? JSON.parse(callResultStr) : callResultStr
 
 	// build response from the call result
-	const reponseJson = /** @type {import('../type.d.js').GptTaggingResult} */({
+	const reponseJson = /** @type {import('./type.d.js').GptTaggingResult} */({
 		sentiment: callResult.sentiment || 'n/a',
 		tone: callResult.tone || 'n/a',
 		language: callResult.language || 'n/a',
@@ -150,7 +150,7 @@ expressRouter.get('/summarization', expressApiCache(10), async (request, respons
 	});
 
 	// build response from the call result
-	const reponseJson = /** @type {import('../type.d.js').GptSummarizationResult} */({
+	const reponseJson = /** @type {import('./type.d.js').GptSummarizationResult} */({
 		summary: callResult.text
 	})
 	return response.json(reponseJson)

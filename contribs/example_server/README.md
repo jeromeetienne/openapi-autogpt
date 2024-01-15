@@ -6,3 +6,4 @@ This server is quite messy and experimental
 
 ## Useful Links
 - [openapi](http://localhost:3000/api)
+- [Api on top of hacker-news](https://news.ycombinator.com/)

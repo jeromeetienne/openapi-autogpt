@@ -23,7 +23,7 @@ import LoaderHelper from "../loader_helper.js"
 ///////////////////////////////////////////////////////////////////////////////
 
 // MyDebug - setup a debug log function
-const debug = Debug('openapi-auogpt')
+const debug = Debug('openapi-autogpt')
 
 // NOTE: trick to have __dirname available in ESM modules - https://blog.logrocket.com/alternatives-dirname-node-js-es-modules/#how-does-getting-dirname-back-work
 import * as url from 'url';
@@ -203,8 +203,8 @@ export default async function cliCommandQuery(openApiFileName, autoGptFileName) 
 		try {
 			// debugger
 			callResult = await openAiApi.chat.completions.create({
-				model: "gpt-3.5-turbo-0613",
-				// model: 'gpt-3.5-turbo-1106',
+				// model: "gpt-3.5-turbo-0613",
+				model: 'gpt-3.5-turbo-1106',
 				// model: "gpt-4-0613",
 				// model: 'gpt-4-1106-preview',
 

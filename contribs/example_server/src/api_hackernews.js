@@ -1,12 +1,16 @@
 // npm imports
 import Express from 'express'
 import Puppeteer from 'puppeteer'
+import Debug from 'debug'
 
 // langchain imports
 import { CheerioWebBaseLoader } from "langchain/document_loaders/web/cheerio";
 
 // local imports
 import expressApiCache from './express_api_cache.js'
+
+// Debug - setup a debug log function
+const debug = Debug('example-server')
 
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
@@ -22,9 +26,11 @@ var expressRouter = Express.Router()
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
+debug('init puppeteer')
 const puppeteerBrowser = await Puppeteer.launch({
 	headless: 'new'
 });
+debug('puppeteer init done')
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -43,7 +49,7 @@ expressRouter.get('/topics', expressApiCache(10), async (request, response) => {
 		// @ts-ignore
 		const athingEls = /** @type {HTMLElement[]} */([...document.querySelectorAll(".athing")])
 		const subtextEls = /** @type {HTMLElement[]} */([...document.querySelectorAll(".athing + tr .subtext")])
-		const topicItems =  /** @type {import('../type.d.js').HNTopicsItem[]} */([])
+		const topicItems =  /** @type {import('./type.d.js').HNTopicsItem[]} */([])
 		for (const athingEl of athingEls) {
 			const athingIndex = athingEls.indexOf(athingEl)
 			const subtextEl = subtextEls[athingIndex]
@@ -65,7 +71,7 @@ expressRouter.get('/topics', expressApiCache(10), async (request, response) => {
 			const commentsCount = lastAnchorEl ? parseInt(lastAnchorEl.innerText) : 0
 
 			// build hnTitle
-			const hnTopicsItem = /** @type {import('../type.d.js').HNTopicsItem} */({
+			const hnTopicsItem = /** @type {import('./type.d.js').HNTopicsItem} */({
 				title: titleEl?.textContent,
 				url: absoluteUrl,
 				upVotesCount: upVotesCount,
@@ -77,7 +83,7 @@ expressRouter.get('/topics', expressApiCache(10), async (request, response) => {
 	})
 	console.log({ topicItems })
 
-	const hnTopicsResult = /** @type {import('../type.d.js').HNTopicsResult} */({
+	const hnTopicsResult = /** @type {import('./type.d.js').HNTopicsResult} */({
 		topicItems: topicItems
 	})
 
@@ -95,7 +101,7 @@ expressRouter.get('/pageContent', expressApiCache(10), async (request, response)
 	const loadedDocuments = await documentLoader.load();
 
 	// build response
-	const reponseJson = /** @type {import('../type.d.js').HNContentResult} */({
+	const reponseJson = /** @type {import('./type.d.js').HNContentResult} */({
 		pageContent: loadedDocuments[0].pageContent.trim()
 	})
 	return response.json(reponseJson)

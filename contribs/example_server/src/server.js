@@ -1,3 +1,4 @@
+
 // node imports
 import Path from 'path'
 import Http from 'http'
@@ -11,6 +12,7 @@ import Cors from 'cors'
 // local imports
 import ServerApiHackerNews from './api_hackernews.js'
 import ServerApiGptActions from './api_gpt_actions.js'
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -62,7 +64,7 @@ expressApp.use(Cors({
 
 // add ServerApiHackerNews
 await ServerApiHackerNews.init()
-expressApp.use('/api/gpt-hn', ServerApiHackerNews.expressRouter)
+expressApp.use('/api/hackernews', ServerApiHackerNews.expressRouter)
 
 // add ServerApiGptActions
 await ServerApiGptActions.init()
@@ -75,7 +77,7 @@ expressApp.use('/api/gpt-actions', ServerApiGptActions.expressRouter)
 ///////////////////////////////////////////////////////////////////////////////
 
 // serve static files from ```/web``` folders
-const webStaticPath = Path.join(__dirname, '../../web/')
+const webStaticPath = Path.join(__dirname, '../web/')
 expressApp.use('/', Express.static(webStaticPath))
 
 // enable serving directory listing - only for development
